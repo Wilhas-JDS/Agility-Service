@@ -133,8 +133,9 @@ const styles = StyleSheet.create({
   header: {
     flexDirection: 'column',
     alignItems: "center",
-    height: 300,
-    
+    height: 250,
+    width: 'auto',
+    padding: 50,
     
   },
   picker: {
