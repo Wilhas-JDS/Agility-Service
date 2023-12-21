@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 
-export default function Cancelamento() {
+export default function Cancelamentos() {
   const [selectedItem, setSelectedItem] = useState(null);
 
   const placeholder = {

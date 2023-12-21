@@ -17,7 +17,7 @@ export default function Menu() {
       <ScrollView style={styles.container}>
         <StatusBar
           backgroundColor="#209A57" // Cor de fundo da barra de status
-          barStyle="light-content" // Define a cor do texto da barra de status
+          barStyle="dark-content" // Define a cor do texto da barra de status
         />
         <View style={styles.header}>
           <Image source={require('../../../assets/logoSub.png')} />
@@ -75,12 +75,13 @@ export default function Menu() {
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Cancelamento");
+            navigation.navigate("Cancelamentos");
           }}
           style={styles.botao}
         >
           <Text style={styles.botaoTexto}>Cancelamento</Text>
         </TouchableOpacity>
+        
         {/* Utilizando @react-native-picker/picker */}
         <Picker
           selectedValue={selectedItem}
@@ -91,15 +92,11 @@ export default function Menu() {
           <Picker.Item label="wilhas" value="wilhas" />
           <Picker.Item label="Rodrigo" value="Rodrigo" />
         </Picker>
+        <TouchableOpacity style={styles.botaoFinailizaAt}>
+          <Text style={styles.botaoTextoFinailizaAt}>Finaliza Atendimento</Text>
+        </TouchableOpacity>
         {/* Adicionando a área de texto (TextInput) */}
-        <TextInput
-          style={styles.textArea}
-          placeholder="Observações"
-          multiline={true}
-          numberOfLines={4}
-          value={observacao}
-          onChangeText={(text) => setObservacao(text)}
-        />
+        
       </ScrollView>
     );
   };
@@ -111,7 +108,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#209A57',
-    padding: 20,
+    padding:20,
+    
   },
   texto: {
     fontSize: 30,
@@ -128,20 +126,23 @@ const styles = StyleSheet.create({
   },
   botaoTexto: {
     fontSize: 15,
-    color: '#fff',
+    color: '#black',
     fontWeight: 'bold',
+    fontSize:30,
   },
   header: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 20,
+    height: 300,
+    
+    
   },
   picker: {
-    height: 40,
+    height: 50,
     backgroundColor: '#fff',
-    marginBottom: 10,
-    paddingHorizontal: 10,
+    marginBottom: 150,
+    marginTop:60 , 
+    paddingHorizontal: 5,
   },
   textArea: {
     height: 100,
@@ -149,5 +150,19 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 20,
     fontSize: 15,
+  },
+  botaoFinailizaAt: {
+    backgroundColor: '#ca6500',
+    padding: 25,
+    borderRadius: 5,
+    alignSelf: 'center', // Alinha o botão à direita
+    marginTop:0,
+    
+  },
+  botaoTextoFinailizaAt: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize:30,
+    fontStyle: 'italic',
   },
 });
