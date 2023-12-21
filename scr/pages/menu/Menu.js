@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image, TextInput, StatusBar } 
-from "react-native";
+import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image, TextInput, StatusBar }
+  from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from '@react-native-picker/picker';
 
@@ -21,8 +21,7 @@ export default function Menu() {
         />
         <View style={styles.header}>
           <Image source={require('../../../assets/logoSub.png')} />
-          <Text style={styles.texto}>Nº CAIXA:</Text>
-          <Text style={styles.texto}>{caixa}</Text>
+          <Text >Nº CAIXA:{caixa}</Text>
         </View>
         <TouchableOpacity
           onPress={() => {
@@ -81,7 +80,7 @@ export default function Menu() {
         >
           <Text style={styles.botaoTexto}>Cancelamento</Text>
         </TouchableOpacity>
-        
+
         {/* Utilizando @react-native-picker/picker */}
         <Picker
           selectedValue={selectedItem}
@@ -96,7 +95,7 @@ export default function Menu() {
           <Text style={styles.botaoTextoFinailizaAt}>Finaliza Atendimento</Text>
         </TouchableOpacity>
         {/* Adicionando a área de texto (TextInput) */}
-        
+
       </ScrollView>
     );
   };
@@ -108,8 +107,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#209A57',
-    padding:20,
-    
+    padding: 20,
+
   },
   texto: {
     fontSize: 30,
@@ -126,9 +125,9 @@ const styles = StyleSheet.create({
   },
   botaoTexto: {
     fontSize: 15,
-    color: '#black',
+    color: 'black',
     fontWeight: 'bold',
-    fontSize:30,
+    fontSize: 30,
   },
   header: {
     flexDirection: 'column',
@@ -136,13 +135,14 @@ const styles = StyleSheet.create({
     height: 250,
     width: 'auto',
     padding: 50,
-    
+
   },
   picker: {
+    fontSize: 20,
     height: 50,
     backgroundColor: '#fff',
     marginBottom: 150,
-    marginTop:60 , 
+    marginTop: 60,
     paddingHorizontal: 5,
   },
   textArea: {
@@ -157,13 +157,13 @@ const styles = StyleSheet.create({
     padding: 25,
     borderRadius: 5,
     alignSelf: 'center', // Alinha o botão à direita
-    marginTop:0,
-    
+    marginTop: 0,
+
   },
   botaoTextoFinailizaAt: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize:30,
+    fontSize: 30,
     fontStyle: 'italic',
   },
 });

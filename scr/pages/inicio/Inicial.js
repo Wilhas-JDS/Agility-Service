@@ -14,7 +14,7 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
         barStyle="light-content" // Define a cor do texto da barra de status
       />
       <View style={styles.header}>
-        <Image source={require('../../../assets/logoTelaInicial.png')} />
+        <Image source={require('../../../assets/logo.png')} />
       </View>
       <View>
         <TouchableOpacity
