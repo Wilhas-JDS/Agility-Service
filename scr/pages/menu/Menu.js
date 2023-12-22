@@ -4,6 +4,7 @@ import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image, TextInput,
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from '@react-native-picker/picker';
 
+
 export default function Menu() {
   const [selectedItem, setSelectedItem] = useState("troco");
   const [observacao, setObservacao] = useState("");
@@ -92,15 +93,17 @@ export default function Menu() {
           <Picker.Item label="Rodrigo" value="Rodrigo" />
         </Picker>
         <TouchableOpacity style={styles.botaoFinailizaAt}>
-          <Text style={styles.botaoTextoFinailizaAt}>Finaliza Atendimento</Text>
+          <Text style={styles.botaoTextoFinailizaAt}>Finalizar Atendimento</Text>
         </TouchableOpacity>
         {/* Adicionando a área de texto (TextInput) */}
 
       </ScrollView>
     );
+   
   };
 
   return <App />;
+  
 }
 
 const styles = StyleSheet.create({
