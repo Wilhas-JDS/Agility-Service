@@ -15,8 +15,13 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name=" " component={Inicial} />
+    <Stack.Navigator  initialRouteName=" "
+    screenOptions={({ route }) => ({
+      headerMode: "none",
+      headerTintColor: "#FF0000",
+      headerBackgroundColor: "#ff8000",
+    })}>
+      <Stack.Screen name="Inicial" component={Inicial} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Troco" component={Troco} />
       <Stack.Screen name="Cigarro" component={Cigarro} />
@@ -36,3 +41,4 @@ export default function App() {
     </NavigationContainer>
   );
 };
+

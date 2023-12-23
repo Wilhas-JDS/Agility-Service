@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-
-import Menu from '../../pages/menu/Menu';
+import { useNavigation } from "@react-navigation/native";
 
 export default function Troco() {
   const [selectedMarca, setSelectedMarca] = useState(null);
@@ -53,7 +52,7 @@ export default function Troco() {
 
   ];
 
-
+  const navigation = useNavigation();
   return (
 
     <View style={styles.container}>
@@ -88,6 +87,13 @@ export default function Troco() {
         <Text style={styles.botaoCbTexto}>
           Solicitar Atendimento
         </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Menu");
+        }}
+      >
+        <Text >Voltar</Text>
       </TouchableOpacity>
     </View>
 

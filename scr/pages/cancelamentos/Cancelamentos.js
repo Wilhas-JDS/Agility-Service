@@ -1,111 +1,140 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Text, Image, TouchableOpacity, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-
+import { useNavigation } from "@react-navigation/native";
 
 export default function Troco() {
-  const [selectedValor, setSelectedValor] = useState(null);
+  const [selectedMarca, setSelectedMarca] = useState(null);
   const [selectedTipo, setSelectedTipo] = useState(null);
+  const [selectedQtd, setSelectedQtd] = useState(null);
+  const [caixa, setCaixa] = useState("14");
 
-  const placeholderValor = {
-    label: "Selecione o Valor",
+  const placeholderMarca = {
+    label: "Selecione a marca desejada",
     value: null,
     color: "#9EA0A4",
   };
-  const placeholderTipo = {
-    label: "Selecione o tipo",
+
+  const placeholderQtd = {
+    label: "Selecione a quantidade",
     value: null,
     color: "#9EA0A4",
   };
 
-  const valor = [
-    { label: "R$ 5 (2x 2 + 1)", value: "R$ 5 (2x 2 + 1)" },
-    { label: "R$ 10 (2x 5)", value: "R$ 10 (2x 5)" },
-    { label: "R$ 10 (5x 2)", value: "R$ 10 (5x 2)" },
-    { label: "R$ 20 (2X 10)", value: "R$ 20 (2X 10)" },
-    { label: "R$ 20 (1X R$10 + 2x R$5)", value: "R$ 20 (1X R$10 + 2x R$5)" },
-    { label: "R$ 50 (2X R$20 + 1x R$10)", value: "R$ 50 (2X R$20 + 1x R$10)" },
-    { label: "R$ 50 (1X R$20 + 3x R$10)", value: "R$ 50 (1X R$20 + 3x R$10)" },
-    { label: "R$ 100 (2X R$50)", value: "R$ 100 (2X R$50)" },
-    { label: "R$ 100 (1X R$50 2x 20 1x 10)", value: "R$ 100 (1X R$50 2x 20 1x 10)" },
-    { label: "R$ 200 (1X R$100 2x 50)", value: "R$ 200 (1X R$100 2x 50)" },
-    { label: "R$ 200 (1X R$100 2x 20 2x 5)", value: "R$ 200 (1X R$100 2x 20 2x 5)" },
+  const marca = [
+    { label: "Lucky Strike", value: "Lucky Strike" },
+    { label: "Marlboro", value: "Marlboro" },
+    { label: "Dunhill", value: "Dunhill" },
+    { label: "Camel", value: "Camel" },
+    { label: "Parliament", value: "Parliament" },
+  ];
 
+  const qtd = [
+    { label: "1", value: "1" },
+    { label: "2", value: "2" },
+    { label: "3", value: "3" },
+    { label: "4", value: "4" },
+    { label: "5", value: "5" },
+    { label: "6", value: "6" },
+    { label: "7", value: "7" },
+    { label: "8", value: "8" },
+    { label: "9", value: "9" },
+    { label: "10", value: "10" },
+    { label: "11", value: "11" },
   ];
-  const tipo = [
-    { label: "R$ 5", value: "R$ 5" },
-    { label: "R$ 10", value: "R$ 10" },
-    { label: "R$ 20", value: "R$ 20" },
-    { label: "R$ 50", value: "R$ 50" },
-    { label: "R$ 100", value: "R$ 100" },
-    { label: "R$ 200", value: "R$ 200" },
-  ];
+
+  const navigation = useNavigation();
 
   return (
-
     <View style={styles.container}>
-      <View style={styles.imageStyles}>
-        <Image source={require('../../../assets/logoSub.png')} />
-        <Text>
-          Nº Caixa
-        </Text>
+      <StatusBar
+        backgroundColor='#000000'
+        barStyle="default"
+      />
+      <View style={styles.header}>
+        <Image source={require('../../../assets/logo.png')} />
+        <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Nº CAIXA:{caixa}</Text>
       </View>
+      <View>
+        <RNPickerSelect
+          placeholder={placeholderMarca}
+          items={marca}
+          onValueChange={(value) => setSelectedMarca(value)}
+          value={selectedMarca}
+          style={pickerStyles}
+        />
 
-      <RNPickerSelect
-  placeholder={placeholderValor}
-  items={valor}
-  onValueChange={(value) => setSelectedValor(value)}
-  value={selectedValor}
-  style={pickerSelectStyles}
-/>
-<RNPickerSelect
-  placeholder={placeholderTipo}
-  items={tipo}
-  onValueChange={(value) => setSelectedTipo(value)}
-  value={selectedTipo}
-  style={pickerSelectStyles}
-/>
+        <RNPickerSelect
+          placeholder={placeholderQtd}
+          items={qtd}
+          onValueChange={(value) => setSelectedQtd(value)}
+          value={selectedQtd}
+          style={pickerStyles}
+        />
+      </View>
+      <View>
+        <TouchableOpacity style={styles.botaoSoliAt}>
+          <Text style={styles.botaoTextoSoliAt}>
+            Solicitar Atendimento
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Menu");
+          }}
+          style={styles.botao}
+          position="absolute"
+          left="0"
+          top="-100"
+        >
+          <Text style={{
+            width: 'auto', position: 'absolute', left: '0',
+            top: "-100"
+          }}>Voltar</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-
   );
 }
+
+const pickerStyles = {
+  inputAndroid: {
+    fontSize: 30,
+    backgroundColor: '#008040',
+    marginBottom: -50,
+    marginTop: 230,
+    paddingHorizontal: 5,
+    color: '#000000',
+  },
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#2A784D',
-
-  },
-});
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 4,
-    color: "black",
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-  inputAndroid: {
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 0.5,
-    borderColor: "purple",
-    borderRadius: 8,
-    color: "black",
-    paddingRight: 30, // to ensure the text is never behind the icon
+    backgroundColor: '#209A57',
+    padding: 20,
   },
 
-  imageStyles: {
-    flexDirection: 'row',
+  header: {
+    flexDirection: 'column',
     alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  }
+    height: 250,
+    width: 'auto',
+    padding: 50,
+    marginVertical: 20
+  },
+
+  botaoSoliAt: {
+    backgroundColor: '#ca6500',
+    padding: 25,
+    borderRadius: 52,
+    alignSelf: 'center',
+    marginTop: 80,
+  },
+  botaoTextoSoliAt: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 30,
+    fontStyle: 'italic',
+  },
 });

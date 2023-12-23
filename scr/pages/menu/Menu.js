@@ -108,7 +108,7 @@ export default function Menu() {
         >
           <Text >Voltar</Text>
         </TouchableOpacity>
-        {/* Adicionando a área de texto (TextInput) */}
+        {/* Adicionando a área de texto (TextInput)z */}
 
       </ScrollView>
     );
