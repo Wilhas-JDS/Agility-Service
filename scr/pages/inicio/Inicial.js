@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View, StyleSheet, Image, StatusBar, BackHandler } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import Menu from "../menu/Menu";
+import {stylesInicial} from "../estilos/Styles"
 
 export default function Inicial({ navigation }) { // Passar navigation como prop
   const [caixa, setCaixa] = useState("14");
+  const styles  = stylesInicial;
   return (
 
     <View style={styles.container}>
@@ -50,40 +52,3 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#209A57",
-  },
-
-  header: {
-    backgroundColor: '#209A57',
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 50,
-  },
-
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "center",
-  },
-
-  titulo: {
-    fontSize: 24,
-    color: '#00a854',
-    marginTop: 10,
-  },
-
-  botao: {
-    fontSize: 22,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 50,
-    marginBottom: 37,
-    backgroundColor: '#2A784D',
-    borderRadius: 100,
-
-  },
-});

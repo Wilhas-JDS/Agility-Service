@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { useNavigation } from "@react-navigation/native";
-
+import { stylesCancelamento } from "../estilos/Styles";
 export default function Troco() {
   const [selectedMarca, setSelectedMarca] = useState(null);
   const [selectedTipo, setSelectedTipo] = useState(null);
@@ -44,7 +44,7 @@ export default function Troco() {
   ];
 
   const navigation = useNavigation();
-
+const styles = stylesCancelamento;
   return (
     <View style={styles.container}>
       <StatusBar
@@ -108,33 +108,4 @@ const pickerStyles = {
   },
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#209A57',
-    padding: 20,
-  },
 
-  header: {
-    flexDirection: 'column',
-    alignItems: "center",
-    height: 250,
-    width: 'auto',
-    padding: 50,
-    marginVertical: 20
-  },
-
-  botaoSoliAt: {
-    backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 52,
-    alignSelf: 'center',
-    marginTop: 80,
-  },
-  botaoTextoSoliAt: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontStyle: 'italic',
-  },
-});
