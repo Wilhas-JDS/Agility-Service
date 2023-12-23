@@ -38,7 +38,7 @@ export default function Menu() {
           onPress={() => {
             navigation.navigate("Cigarro");
           }}
-          style={styles.botao}
+          style={stylesMenu.botao}
         >
           <Text style={stylesMenu.botaoTexto}>Solicitar cigarro</Text>
         </TouchableOpacity>

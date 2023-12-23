@@ -38,7 +38,7 @@ const stylesMenu = StyleSheet.create({
   picker: {
     fontSize: 20,
     height: 50,
-    backgroundColor: '#fff',
+    backgroundColor: '#2A784D',
     marginBottom: 150,
     marginTop: 60,
     paddingHorizontal: 5,
