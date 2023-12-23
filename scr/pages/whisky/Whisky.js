@@ -15,11 +15,7 @@ export default function Troco() {
     value: null,
     color: "#9EA0A4",
   };
-  const placeholderTipo = {
-    label: "Selecione o tipo",
-    value: null,
-    color: "#9EA0A4",
-  };
+  
   const placeholderQtd = {
     label: "Selecione a quantidade",
     value: null,
@@ -35,10 +31,7 @@ export default function Troco() {
     { label: "Parliament", value: "Parliament" },
 
   ];
-  const tipo = [
-    { label: 'Maço', value: "Maço" },
-    { label: "Box", value: "Box" },
-  ];
+  
   const qtd = [
     { label: "1", value: "1" },
     { label: "2", value: "2" },
@@ -69,13 +62,7 @@ export default function Troco() {
         value={selectedMarca}
         style={styles.picker}
       />
-      <RNPickerSelect
-        placeholder={placeholderTipo}
-        items={tipo}
-        onValueChange={(value) => setSelectedTipo(value)}
-        value={selectedTipo}
-        style={styles.picker}
-      />
+      
       <RNPickerSelect
         placeholder={placeholderQtd}
         items={qtd}
