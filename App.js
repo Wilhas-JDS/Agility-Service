@@ -1,4 +1,5 @@
 import React from "react";
+import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import Inicial from "./scr/pages/inicio/Inicial";
@@ -15,7 +16,12 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator  initialRouteName=" "
+    screenOptions={({ route }) => ({
+      headerMode: "none",
+      headerTintColor: "#FF0000",
+      headerBackgroundColor: "#0000FF",
+    })}>
       <Stack.Screen name=" " component={Inicial} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Troco" component={Troco} />
@@ -36,3 +42,4 @@ export default function App() {
     </NavigationContainer>
   );
 };
+
