@@ -1,9 +1,8 @@
 // Sty.js
 import { StyleSheet } from "react-native";
 
-export default function Styles(){
 const stylesMenu = StyleSheet.create({
-  containerMenu: {
+  container: {
     flex: 1,
     backgroundColor: '#209A57',
     padding: 20,
@@ -65,5 +64,6 @@ const stylesMenu = StyleSheet.create({
     fontSize: 30,
     fontStyle: 'italic',
   },
+  
 });
-}
+export default stylesMenu;
