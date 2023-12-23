@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import 'react-native-gesture-handler';
 import { Text, TouchableOpacity, View, StyleSheet, Image, StatusBar } from "react-native";
 
 import Menu from "../menu/Menu";
 
 export default function Inicial({ navigation }) { // Passar navigation como prop
-
+  const [caixa, setCaixa] = useState("14");
   return (
 
     <View style={styles.container}>
@@ -15,6 +15,7 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
       />
       <View style={styles.header}>
         <Image source={require('../../../assets/logo.png')} />
+        <Text style={{fontSize: 20, fontWeight: 'bold'}} >Nº CAIXA:{caixa}</Text>
       </View>
       <View>
         <TouchableOpacity

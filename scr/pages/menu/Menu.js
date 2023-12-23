@@ -22,7 +22,7 @@ export default function Menu() {
         />
         <View style={styles.header}>
           <Image source={require('../../../assets/logoSub.png')} />
-          <Text >Nº CAIXA:{caixa}</Text>
+          <Text style={{fontSize: 20, fontWeight: 'bold'}} >Nº CAIXA:{caixa}</Text>
         </View>
         <TouchableOpacity
           onPress={() => {

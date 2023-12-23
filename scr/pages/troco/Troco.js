@@ -1,10 +1,13 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Text, Image } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-import {caixa} from '../../../scr/pages/menu/Menu'
+
+import Menu from '../../pages/menu/Menu';
+
 export default function Troco() {
   const [selectedValor, setSelectedValor] = useState(null);
   const [selectedTipo, setSelectedTipo] = useState(null);
+  const [caixa, setCaixa] = useState("14");
 
   const placeholderValor = {
     label: "Selecione o Valor",
@@ -43,25 +46,31 @@ export default function Troco() {
   return (
 
     <View style={styles.container}>
-       <View style={styles.header}>
-          <Image source={require('../../../assets/logoSub.png')} />
-          <Text >Nº CAIXA:{caixa}</Text>
-        </View>
+      <View style={styles.header}>
+        <Image source={require('../../../assets/logoSub.png')} />
+        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Nº CAIXA:{caixa}</Text>
+      </View>
 
       <RNPickerSelect
-  placeholder={placeholderValor}
-  items={valor}
-  onValueChange={(value) => setSelectedValor(value)}
-  value={selectedValor}
-  style={pickerSelectStyles}
-/>
-<RNPickerSelect
-  placeholder={placeholderTipo}
-  items={tipo}
-  onValueChange={(value) => setSelectedTipo(value)}
-  value={selectedTipo}
-  style={pickerSelectStyles}
-/>
+        placeholder={placeholderValor}
+        items={valor}
+        onValueChange={(value) => setSelectedValor(value)}
+        value={selectedValor}
+        style={styles.picker}
+      />
+      <RNPickerSelect
+        placeholder={placeholderTipo}
+        items={tipo}
+        onValueChange={(value) => setSelectedTipo(value)}
+        value={selectedTipo}
+        style={styles.picker}
+      />
+      
+      <TouchableOpacity style={styles.botaoSoliAt}>
+        <Text style={styles.botaoCbTexto}>
+          Solicitar Atendimento
+        </Text>
+      </TouchableOpacity>
     </View>
 
   );
@@ -70,39 +79,58 @@ export default function Troco() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#209A57',
+    padding: 20,
+
+  },
+  texto: {
+    fontSize: 30,
+    fontWeight: "bold",
+  },
+  botaoCb: {
+    flex: 0,
+    fontSize: 30,
+    alignItems: "center",
+    marginTop: 20,
     backgroundColor: '#2A784D',
-
+    borderRadius: 50,
+    width: 'auto',
   },
-});
-
-const pickerSelectStyles = StyleSheet.create({
-  inputIOS: {
-    fontSize: 16,
-    paddingVertical: 12,
-    paddingHorizontal: 10,
-    borderWidth: 1,
-    borderColor: "gray",
-    borderRadius: 4,
-    color: "black",
-    paddingRight: 30, // to ensure the text is never behind the icon
+  botaoCbTexto: {
+    fontSize: 15,
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 30,
   },
-  inputAndroid: {
-    fontSize: 16,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    borderWidth: 0.5,
-    borderColor: "purple",
-    borderRadius: 8,
-    color: "black",
-    paddingRight: 30, // to ensure the text is never behind the icon
-  },
-
-  imageStyles: {
-    flexDirection: 'row',
+  header: {
+    flexDirection: 'column',
     alignItems: "center",
-    justifyContent: "space-between",
-    marginBottom: 20,
-    justifyContent: "center",
-    alignItems: "center",
-  }
+    height: 250,
+    width: 'auto',
+    padding: 50,
+
+  },
+  picker: {
+    fontSize: 20,
+    height: 50,
+    backgroundColor: '#fff',
+    marginBottom: 150,
+    marginTop: 110,
+    paddingHorizontal: 5,
+  },
+  
+  botaoSoliAt: {
+    backgroundColor: '#ca6500',
+    padding: 25,
+    borderRadius: 50,
+    alignSelf: 'center', // Alinha o botão à direita
+    marginTop: 500,
+
+  },
+  botaoTextoSoliAt: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 30,
+    fontStyle: 'italic',
+  },
 });
