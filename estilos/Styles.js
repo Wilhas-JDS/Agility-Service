@@ -1,39 +1,69 @@
 // Sty.js
 import { StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
+export default function Styles(){
+const stylesMenu = StyleSheet.create({
+  containerMenu: {
     flex: 1,
-    backgroundColor: "#209A57",
-  },
-
-  header: {
-    backgroundColor: "#2A784D",
-    alignItems: "center",
-    justifyContent: "space-between",
+    backgroundColor: '#209A57',
     padding: 20,
-  },
 
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "contain",
   },
-
-  titulo: {
-    fontSize: 24,
-    color: "#fff",
-    marginTop: 10,
+  texto: {
+    fontSize: 30,
+    fontWeight: "bold",
   },
-
   botao: {
-    fontSize: 22,
-    justifyContent: "center",
+    flex: 0,
+    fontSize: 30,
     alignItems: "center",
-    marginTop: 30,
-    backgroundColor: "#2A784D",
+    marginTop: 20,
+    backgroundColor: '#2A784D',
+    borderRadius: 50,
+    width: 'auto',
+  },
+  botaoTexto: {
+    fontSize: 15,
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 30,
+  },
+  header: {
+    flexDirection: 'column',
+    alignItems: "center",
+    height: 250,
+    width: 'auto',
+    padding: 50,
+
+  },
+  picker: {
+    fontSize: 20,
+    height: 50,
+    backgroundColor: '#fff',
+    marginBottom: 150,
+    marginTop: 60,
+    paddingHorizontal: 5,
+  },
+  textArea: {
+    height: 100,
+    backgroundColor: '#fff',
+    padding: 10,
+    marginBottom: 20,
+    fontSize: 15,
+  },
+  botaoFinailizaAt: {
+    backgroundColor: '#ca6500',
+    padding: 25,
     borderRadius: 5,
+    alignSelf: 'center', // Alinha o botão à direita
+    marginTop: 0,
+
+  },
+  botaoTextoFinailizaAt: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 30,
+    fontStyle: 'italic',
   },
 });
-
-export default styles;
+}

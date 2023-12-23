@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity } from "react-native";
+import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
-
+import { useNavigation } from "@react-navigation/native";
 import Menu from '../../pages/menu/Menu';
 
 export default function Troco() {
@@ -42,13 +42,17 @@ export default function Troco() {
     { label: "R$ 100", value: "R$ 100" },
     { label: "R$ 200", value: "R$ 200" },
   ];
-
+  const navigation = useNavigation();
   return (
 
     <View style={styles.container}>
+      <StatusBar
+        backgroundColor='#000000' // Cor de fundo da barra de status
+        barStyle="default" // Define a cor do texto da barra de status
+      />
       <View style={styles.header}>
         <Image source={require('../../../assets/logoSub.png')} />
-        <Text style={{fontSize: 20, fontWeight: 'bold'}}>Nº CAIXA:{caixa}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Nº CAIXA:{caixa}</Text>
       </View>
 
       <RNPickerSelect
@@ -65,11 +69,18 @@ export default function Troco() {
         value={selectedTipo}
         style={styles.picker}
       />
-      
+
       <TouchableOpacity style={styles.botaoSoliAt}>
         <Text style={styles.botaoCbTexto}>
           Solicitar Atendimento
         </Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Menu");
+        }}
+      >
+        <Text >Voltar</Text>
       </TouchableOpacity>
     </View>
 
@@ -118,7 +129,7 @@ const styles = StyleSheet.create({
     marginTop: 110,
     paddingHorizontal: 5,
   },
-  
+
   botaoSoliAt: {
     backgroundColor: '#ca6500',
     padding: 25,

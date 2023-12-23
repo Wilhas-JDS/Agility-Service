@@ -3,7 +3,7 @@ import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image, TextInput,
   from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from '@react-native-picker/picker';
-
+import Inicial from "../inicio/Inicial";
 
 export default function Menu() {
   const [selectedItem, setSelectedItem] = useState("troco");
@@ -17,9 +17,9 @@ export default function Menu() {
     return (
       <ScrollView style={styles.container}>
         <StatusBar
-          backgroundColor="#209A57" // Cor de fundo da barra de status
-          barStyle="dark-content" // Define a cor do texto da barra de status
-        />
+        backgroundColor='#000000' // Cor de fundo da barra de status
+        barStyle="default" // Define a cor do texto da barra de status
+      />
         <View style={styles.header}>
           <Image source={require('../../../assets/logoSub.png')} />
           <Text style={{fontSize: 20, fontWeight: 'bold'}} >Nº CAIXA:{caixa}</Text>
@@ -95,6 +95,17 @@ export default function Menu() {
         <TouchableOpacity style={styles.botaoFinailizaAt}>
           <Text style={styles.botaoTextoFinailizaAt}>Finalizar Atendimento</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+        onPress={() => {
+          navigation.navigate("Inicial");
+        }}
+        style={styles.botao}
+        position="absolute"
+        left="0"
+        top="-100"
+      >
+        <Text >Voltar</Text>
+      </TouchableOpacity>
         {/* Adicionando a área de texto (TextInput) */}
 
       </ScrollView>

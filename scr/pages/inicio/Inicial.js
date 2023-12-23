@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import 'react-native-gesture-handler';
-import { Text, TouchableOpacity, View, StyleSheet, Image, StatusBar } from "react-native";
-
+import { Text, TouchableOpacity, View, StyleSheet, Image, StatusBar, BackHandler } from "react-native";
+import { NavigationContainer } from '@react-navigation/native';
 import Menu from "../menu/Menu";
 
 export default function Inicial({ navigation }) { // Passar navigation como prop
@@ -10,12 +9,12 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
 
     <View style={styles.container}>
       <StatusBar
-        backgroundColor="#209A57" // Cor de fundo da barra de status
-        barStyle="light-content" // Define a cor do texto da barra de status
+        backgroundColor='#000000' // Cor de fundo da barra de status
+        barStyle="default" // Define a cor do texto da barra de status
       />
       <View style={styles.header}>
         <Image source={require('../../../assets/logo.png')} />
-        <Text style={{fontSize: 20, fontWeight: 'bold'}} >Nº CAIXA:{caixa}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold' }} >Nº CAIXA:{caixa}</Text>
       </View>
       <View>
         <TouchableOpacity
@@ -24,7 +23,16 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
           }}
           style={styles.botao}
         >
-          <Text style={styles.botao}>CHAMAR FISCAL</Text>
+          <Text style={styles.botao}>MENU</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            BackHandler.exitApp();
+          }}
+          style={styles.botao}
+        >
+
+          <Text style={styles.botao}>SAIR</Text>
         </TouchableOpacity>
       </View>
     </View>

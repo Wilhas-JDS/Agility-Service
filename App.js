@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import Inicial from "./scr/pages/inicio/Inicial";
@@ -20,9 +19,9 @@ function MyStack() {
     screenOptions={({ route }) => ({
       headerMode: "none",
       headerTintColor: "#FF0000",
-      headerBackgroundColor: "#0000FF",
+      headerBackgroundColor: "#ff8000",
     })}>
-      <Stack.Screen name=" " component={Inicial} />
+      <Stack.Screen name="Inicial" component={Inicial} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Troco" component={Troco} />
       <Stack.Screen name="Cigarro" component={Cigarro} />
