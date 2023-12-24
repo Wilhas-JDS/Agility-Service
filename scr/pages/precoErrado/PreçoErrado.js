@@ -1,88 +1,59 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity, StatusBar } from "react-native";
-import RNPickerSelect from "react-native-picker-select";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Image, TouchableOpacity, TextInput } from "react-native";
+import { Picker } from '@react-native-picker/picker';
 import { useNavigation } from "@react-navigation/native";
 
-export default function Troco() {
-  const [selectedValor, setSelectedValor] = useState(null);
-  const [selectedTipo, setSelectedTipo] = useState(null);
+export default function SolicitarPausa() {
+  const [observacao, setObservacao] = useState("");
   const [caixa, setCaixa] = useState("14");
+  const [tipoPausa, setTipoPausa] = useState("");
 
-  const placeholderValor = {
-    label: "Selecione o Valor",
-    value: null,
-    color: "#9EA0A4",
-  };
-  const placeholderTipo = {
-    label: "Selecione o tipo",
-    value: null,
-    color: "#9EA0A4",
-  };
-
-  const valor = [
-    { label: "R$ 5 (2x 2 + 1)", value: "R$ 5 (2x 2 + 1)" },
-    { label: "R$ 10 (2x 5)", value: "R$ 10 (2x 5)" },
-    { label: "R$ 10 (5x 2)", value: "R$ 10 (5x 2)" },
-    { label: "R$ 20 (2X 10)", value: "R$ 20 (2X 10)" },
-    { label: "R$ 20 (1X R$10 + 2x R$5)", value: "R$ 20 (1X R$10 + 2x R$5)" },
-    { label: "R$ 50 (2X R$20 + 1x R$10)", value: "R$ 50 (2X R$20 + 1x R$10)" },
-    { label: "R$ 50 (1X R$20 + 3x R$10)", value: "R$ 50 (1X R$20 + 3x R$10)" },
-    { label: "R$ 100 (2X R$50)", value: "R$ 100 (2X R$50)" },
-    { label: "R$ 100 (1X R$50 2x 20 1x 10)", value: "R$ 100 (1X R$50 2x 20 1x 10)" },
-    { label: "R$ 200 (1X R$100 2x 50)", value: "R$ 200 (1X R$100 2x 50)" },
-    { label: "R$ 200 (1X R$100 2x 20 2x 5)", value: "R$ 200 (1X R$100 2x 20 2x 5)" },
-
-  ];
-  const tipo = [
-    { label: "R$ 5", value: "R$ 5" },
-    { label: "R$ 10", value: "R$ 10" },
-    { label: "R$ 20", value: "R$ 20" },
-    { label: "R$ 50", value: "R$ 50" },
-    { label: "R$ 100", value: "R$ 100" },
-    { label: "R$ 200", value: "R$ 200" },
-  ];
   const navigation = useNavigation();
-  return (
 
+  const handleSolicitarPausa = () => {
+    // Adicione a lógica para enviar a solicitação de pausa para o fiscal de caixa
+
+    // Limpar o campo de observação
+    setObservacao("");
+  };
+
+  return (
     <View style={styles.container}>
-      <StatusBar
-        backgroundColor='#000000' // Cor de fundo da barra de status
-        barStyle="default" // Define a cor do texto da barra de status
-      />
       <View style={styles.header}>
         <Image source={require('../../../assets/logoSub.png')} />
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Nº CAIXA:{caixa}</Text>
       </View>
+      
+      <Text style={styles.titulo}>Erro na precificação</Text>
 
-      <RNPickerSelect
-        placeholder={placeholderValor}
-        items={valor}
-        onValueChange={(value) => setSelectedValor(value)}
-        value={selectedValor}
+      <Picker
+        selectedValue={tipoPausa}
+        onValueChange={(itemValue) => setTipoPausa(itemValue)}
         style={styles.picker}
-      />
-      <RNPickerSelect
-        placeholder={placeholderTipo}
-        items={tipo}
-        onValueChange={(value) => setSelectedTipo(value)}
-        value={selectedTipo}
-        style={styles.picker}
+      >
+        
+        <Picker.Item label="Erro de precificação" value="precificação" />
+        <Picker.Item label="Produto não cadastrado" value="cadastrado" />
+      </Picker>
+
+      <TextInput
+        style={styles.textArea}
+        multiline={true}
+        placeholder="Observação (opcional)"
+        value={observacao}
+        onChangeText={(text) => setObservacao(text)}
       />
 
-      <TouchableOpacity style={styles.botaoSoliAt}>
+      <TouchableOpacity onPress={handleSolicitarPausa} style={styles.botaoSoliPausa}>
         <Text style={styles.botaoCbTexto}>
-          Solicitar Atendimento
+          Solicitar Pausa
         </Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Menu");
-        }}
-      >
-        <Text >Voltar</Text>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Menu")}>
+        <Text style={styles.botaoSoliPausa}>Voltar</Text>
       </TouchableOpacity>
     </View>
-
   );
 }
 
@@ -91,20 +62,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#209A57',
     padding: 20,
-
-  },
-  texto: {
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-  botaoCb: {
-    flex: 0,
-    fontSize: 30,
-    alignItems: "center",
-    marginTop: 20,
-    backgroundColor: '#2A784D',
-    borderRadius: 50,
-    width: 'auto',
   },
   botaoCbTexto: {
     fontSize: 15,
@@ -112,35 +69,38 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
   },
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 20,
+  },
   header: {
     flexDirection: 'column',
     alignItems: "center",
     height: 250,
     width: 'auto',
     padding: 50,
-
   },
   picker: {
-    fontSize: 20,
     height: 50,
     backgroundColor: '#fff',
-    marginBottom: 150,
-    marginTop: 110,
+    marginBottom: 20,
+    marginTop: 20,
     paddingHorizontal: 5,
   },
-
-  botaoSoliAt: {
+  textArea: {
+    height: 100,
+    backgroundColor: '#fff',
+    padding: 10,
+    marginBottom: 20,
+    fontSize: 15,
+  },
+  botaoSoliPausa: {
     backgroundColor: '#ca6500',
     padding: 25,
     borderRadius: 50,
-    alignSelf: 'center', // Alinha o botão à direita
-    marginTop: 500,
-
-  },
-  botaoTextoSoliAt: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontStyle: 'italic',
+    alignSelf: 'center',
+    marginTop: 20,
   },
 });

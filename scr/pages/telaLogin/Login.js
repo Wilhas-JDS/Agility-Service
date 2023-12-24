@@ -6,13 +6,16 @@ export default function Login({ navigation }) {
   const [numeroCaixa, setNumeroCaixa] = useState("");
   const [operador, setOperador] = useState("");
 
-  const handleLogin = () => {
-    const numeroCaixaDigitado = numeroCaixa;
-    const operadorDigitado = operador;
+const handleLogin = () => {
+ if (operador && numeroCaixa){
+  navigation.navigate("Inicial", {numeroCaixa: numeroCaixa, operador: operador});
+ } else{
+  alert('Por favor, preencha todas informações!');
+ }
+ 
+};
 
-    navigation.navigate("Inicial", { numeroCaixa: numeroCaixaDigitado, operador: operadorDigitado });
-    //navigation.navigate("Menu", { numeroCaixa: numeroCaixaDigitado, operador: operadorDigitado });
-  };
+  
 
   return (
     
