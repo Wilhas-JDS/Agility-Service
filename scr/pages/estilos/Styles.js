@@ -11,7 +11,7 @@ export const stylesMenu = StyleSheet.create({
   texto: {
     fontSize: 30,
     fontWeight: "bold",
-    color: 'white', // Adicionado para garantir que o texto seja branco
+    color: 'white', // Adicionado para garantir que o textof seja branco
     marginBottom: 20,
   },
   botao: {
