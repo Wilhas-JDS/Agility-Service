@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { Text, TouchableOpacity, View, StyleSheet, Image, StatusBar, BackHandler } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import Menu from "../menu/Menu";
+import { stylesInicial } from "../estilos/Styles"
 
 export default function Inicial({ navigation }) { // Passar navigation como prop
   const [caixa, setCaixa] = useState("14");
+  const styles = stylesInicial;
   return (
 
     <View style={styles.container}>
+      
+      <Text style={stylesInicial.titulo}>
+        Tela Inicial
+      </Text>
+
       <StatusBar
         backgroundColor='#000000' // Cor de fundo da barra de status
         barStyle="default" // Define a cor do texto da barra de status
@@ -19,22 +26,23 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
       <View>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate("Menu"); // Corrigir nome da tela
+            navigation.navigate("Menu");
           }}
-          style={styles.botao}
+          style={styles.botaoMenu}
         >
-          <Text style={styles.botao}>MENU</Text>
+          <Text style={styles.textBotaoMenu}>MENU</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            BackHandler.exitApp();
-          }}
-          style={styles.botao}
-        >
 
-          <Text style={styles.botao}>SAIR</Text>
-        </TouchableOpacity>
       </View>
+      <TouchableOpacity
+        onPress={() => {
+          BackHandler.exitApp();
+        }}
+        style={styles.botaoSair}
+      >
+        <Text style={stylesInicial.textBotaoSair}>SAIR</Text>
+
+      </TouchableOpacity>
     </View>
   );
 }
@@ -50,40 +58,3 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#209A57",
-  },
-
-  header: {
-    backgroundColor: '#209A57',
-    alignItems: "center",
-    justifyContent: "space-between",
-    padding: 50,
-  },
-
-  logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "center",
-  },
-
-  titulo: {
-    fontSize: 24,
-    color: '#00a854',
-    marginTop: 10,
-  },
-
-  botao: {
-    fontSize: 22,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 50,
-    marginBottom: 37,
-    backgroundColor: '#2A784D',
-    borderRadius: 100,
-
-  },
-});

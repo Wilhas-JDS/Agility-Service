@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import Inicial from "./scr/pages/inicio/Inicial";
@@ -15,12 +15,16 @@ const Stack = createStackNavigator();
 
 function MyStack() {
   return (
-    <Stack.Navigator  initialRouteName=" "
+    <Stack.Navigator initialRouteName=" "
     screenOptions={({ route }) => ({
       headerMode: "none",
       headerTintColor: "#FF0000",
-      headerBackgroundColor: "#ff8000",
-    })}>
+      headerBackgroundColor: { // Cor da faixa alterada
+        backgroundColor: "#0000FF",
+      },
+    })}
+  >
+    
       <Stack.Screen name="Inicial" component={Inicial} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Troco" component={Troco} />

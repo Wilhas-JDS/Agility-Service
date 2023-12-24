@@ -3,7 +3,7 @@ import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image, TextInput,
   from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from '@react-native-picker/picker';
-import stylesMenu from "../estilos/Styles";
+import { stylesMenu } from "../estilos/Styles";
 
 export default function Menu() {
   const [selectedItem, setSelectedItem] = useState("troco");
@@ -98,15 +98,10 @@ export default function Menu() {
           <Text style={stylesMenu.botaoTextoFinailizaAt}>Finalizar Atendimento</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Inicial");
-          }}
-          style={stylesMenu.botao}
-          position="absolute"
-          left="0"
-          top="-100"
+          onPress={() => {navigation.navigate("Inicial"); }}
+          style={stylesMenu.botãoVoltar} 
         >
-          <Text >Voltar</Text>
+          <Text style={stylesMenu.txtBotãoVoltar} >Voltar</Text>
         </TouchableOpacity>
         {/* Adicionando a área de texto (TextInput)z */}
 
