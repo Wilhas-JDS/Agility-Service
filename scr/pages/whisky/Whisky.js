@@ -1,11 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { useNavigation } from "@react-navigation/native";
+import { stylesMenu } from "../estilos/Styles";
+
+const marcasDeWhisky = [
+  { label: "Johnnie Walker", value: "Johnnie Walker" },
+  { label: "Jack Daniel's", value: "Jack Daniel's" },
+  { label: "Chivas Regal", value: "Chivas Regal" },
+  { label: "Jameson", value: "Jameson" },
+  { label: "Jim Beam", value: "Jim Beam" },
+  { label: "Crown Royal", value: "Crown Royal" },
+  { label: "Maker's Mark", value: "Maker's Mark" },
+  { label: "Glenfiddich", value: "Glenfiddich" },
+  { label: "Bushmills", value: "Bushmills" },
+  { label: "Wild Turkey", value: "Wild Turkey" },
+  { label: "Four Roses", value: "Four Roses" },
+  { label: "Macallan", value: "Macallan" },
+  { label: "Talisker", value: "Talisker" },
+  { label: "Lagavulin", value: "Lagavulin" },
+  { label: "Knob Creek", value: "Knob Creek" },
+  { label: "Yamazaki", value: "Yamazaki" },
+  { label: "Laphroaig", value: "Laphroaig" },
+  { label: "Highland Park", value: "Highland Park" },
+  { label: "Aberlour", value: "Aberlour" },
+  { label: "Balvenie", value: "Balvenie" },
+];
 
 export default function Troco() {
   const [selectedMarca, setSelectedMarca] = useState(null);
-  const [selectedTipo, setSelectedTipo] = useState(null);
   const [selectedQtd, setSelectedQtd] = useState(null);
   const [caixa, setCaixa] = useState("14");
 
@@ -20,121 +43,59 @@ export default function Troco() {
     value: null,
     color: "#9EA0A4",
   };
- 
-  const marca = [
-    { label: "Lucky Strike", value: "Lucky Strike" },
-    { label: "Marlboro", value: "Marlboro" },
-    { label: "Dunhill", value: "Dunhill" },
-    { label: "Camel", value: "Camel" },
-    { label: "Parliament", value: "Parliament" },
-  ];
-
-  const qtd = [
-    { label: "1", value: "1" },
-    { label: "2", value: "2" },
-    { label: "3", value: "3" },
-    { label: "4", value: "4" },
-    { label: "5", value: "5" },
-    { label: "6", value: "6" },
-    { label: "7", value: "7" },
-    { label: "8", value: "8" },
-    { label: "9", value: "9" },
-    { label: "10", value: "10" },
-    { label: "11", value: "11" },
-  ];
 
   const navigation = useNavigation();
 
-  return (
-    <View style={styles.container}>
-      <StatusBar
-        backgroundColor='#000000'
-        barStyle="default"
-      />
-      <View style={styles.header}>
-        <Image source={require('../../../assets/logo.png')} />
-        <Text style={{ fontSize: 30, fontWeight: 'bold' }}>Nº CAIXA:{caixa}</Text>
-      </View>
-      <View>
-        <RNPickerSelect
-          placeholder={placeholderMarca}
-          items={marca}
-          onValueChange={(value) => setSelectedMarca(value)}
-          value={selectedMarca}
-          style={pickerStyles}
-        />
+  const handleSolicitarAtendimento = () => {
+    // Adicione aqui a lógica para solicitar o atendimento
 
-        <RNPickerSelect
-          placeholder={placeholderQtd}
-          items={qtd}
-          onValueChange={(value) => setSelectedQtd(value)}
-          value={selectedQtd}
-          style={pickerStyles}
-        />
+    // Limpar os campos
+    setSelectedMarca(null);
+    setSelectedQtd(null);
+  };
+
+  return (
+    <View style={stylesMenu.container}>
+      <StatusBar backgroundColor="#000000" barStyle="default" />
+      <View style={stylesMenu.header}>
+        <Image source={require("../../../assets/logoSub.png")} />
+        <Text style={{ fontSize: 22, fontWeight: "bold" }}>Nº CAIXA: {caixa}</Text>
       </View>
-      <View>
-        <TouchableOpacity style={styles.botaoSoliAt}>
-          <Text style={styles.botaoTextoSoliAt}>
-            Solicitar Atendimento
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Menu");
-          }}
-          style={styles.botao}
-          position="absolute"
-          left="0"
-          top="-100"
-        >
-          <Text style={{
-            width: 'auto', position: 'absolute', left: '0',
-            top: "-100"
-          }}>Voltar</Text>
-        </TouchableOpacity>
-      </View>
+
+      <RNPickerSelect
+        placeholder={placeholderMarca}
+        items={marcasDeWhisky}
+        onValueChange={(value) => setSelectedMarca(value)}
+        value={selectedMarca}
+        style={stylesMenu.picker}
+      />
+
+      <RNPickerSelect
+        placeholder={placeholderQtd}
+        items={[
+          { label: "1", value: "1" },
+          { label: "2", value: "2" },
+          { label: "3", value: "3" },
+          { label: "4", value: "4" },
+          { label: "5", value: "5" },
+          { label: "6", value: "6" },
+          { label: "7", value: "7" },
+          { label: "8", value: "8" },
+          { label: "9", value: "9" },
+          { label: "10", value: "10" },
+        ]}
+        onValueChange={(value) => setSelectedQtd(value)}
+        value={selectedQtd}
+        style={stylesMenu.picker}
+      />
+
+      <TouchableOpacity onPress={handleSolicitarAtendimento} style={stylesMenu.botaoFinailizaAt}>
+        <Text style={stylesMenu.botaoTextoFinailizaAt}>Solicitar Atendimento</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Menu")} style={stylesMenu.botãoVoltar}>
+        <Text style={stylesMenu.txtBotãoVoltar}>Voltar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
-
-const pickerStyles = {
-  inputAndroid: {
-    fontSize: 30,
-    backgroundColor: '#008040',
-    marginBottom: -50,
-    marginTop: 230,
-    paddingHorizontal: 5,
-    color: '#000000',
-  },
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#209A57',
-    padding: 20,
-  },
-
-  header: {
-    flexDirection: 'column',
-    alignItems: "center",
-    height: 250,
-    width: 'auto',
-    padding: 50,
-    marginVertical: 20
-  },
-
-  botaoSoliAt: {
-    backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 52,
-    alignSelf: 'center',
-    marginTop: 80,
-  },
-  botaoTextoSoliAt: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontStyle: 'italic',
-  },
-});
