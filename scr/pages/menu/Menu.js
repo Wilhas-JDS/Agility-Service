@@ -42,8 +42,8 @@ export default function Menu({ route }) {
       />
       <View style={stylesMenu.header}>
         <Image source={require('../../../assets/logoSub.png')} />
-        <Text style={{ fontSize: 22, fontWeight: 'bold' }} >Operador(a): {operador}</Text>
-        <Text style={{ fontSize: 22, fontWeight: 'bold' }} >CAIXA: {numeroCaixa}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }} >Operador(a): {operador}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }} >CAIXA: {numeroCaixa}</Text>
       </View>
 
       <TouchableOpacity onPress={() => handleNavigation("Troco")} style={stylesMenu.botao}>
