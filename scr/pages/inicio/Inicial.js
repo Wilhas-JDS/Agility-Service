@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View, StyleSheet, Image, StatusBar, BackHandler } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Menu from "../menu/Menu";
-import { stylesInicial } from "../estilos/Styles"
+import { stylesInicial } from "../estilos/Styles";
+import Login from "../telaLogin/Login";
 
-export default function Inicial({ navigation }) { // Passar navigation como prop
-  const [caixa, setCaixa] = useState("14");
+const Stack = createStackNavigator();
+
+export default function Inicial({ route, navigation }) {
+  //const [caixa, setCaixa] = useState(numeroCaixa);
   const styles = stylesInicial;
-  return (
 
+  // Extrai as variáveis operador e numeroCaixa dos parâmetros de navegação
+  const { operador, numeroCaixa } = route.params || {};
+
+  return (
     <View style={styles.container}>
-      
       <Text style={stylesInicial.titulo}>
         Tela Inicial
       </Text>
@@ -21,7 +27,8 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
       />
       <View style={styles.header}>
         <Image source={require('../../../assets/logo.png')} />
-        <Text style={{ fontSize: 30, fontWeight: 'bold' }} >Nº CAIXA:{caixa}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold' }} >Operador(a):{operador}</Text>
+        <Text style={{ fontSize: 30, fontWeight: 'bold' }} >CAIXA:{numeroCaixa}</Text>
       </View>
       <View>
         <TouchableOpacity
@@ -32,29 +39,28 @@ export default function Inicial({ navigation }) { // Passar navigation como prop
         >
           <Text style={styles.textBotaoMenu}>MENU</Text>
         </TouchableOpacity>
-
       </View>
+
       <TouchableOpacity
-        onPress={() => {
-          BackHandler.exitApp();
+       onPress={() => {
+        navigation.navigate("Login");
         }}
         style={styles.botaoSair}
       >
         <Text style={stylesInicial.textBotaoSair}>SAIR</Text>
-
       </TouchableOpacity>
     </View>
   );
 }
 
-
 const App = () => {
   return (
     <NavigationContainer>
-      <StackNavigator>
-        <Stack.Screen name="Ap" component={Ap} />
+      <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="Inicial" component={Inicial} />
         <Stack.Screen name="Menu" component={Menu} />
-      </StackNavigator>
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

@@ -7,42 +7,44 @@ export const stylesMenu = StyleSheet.create({
     flex: 1,
     backgroundColor: '#209A57',
     padding: 20,
-
   },
   texto: {
     fontSize: 30,
     fontWeight: "bold",
+    color: 'white', // Adicionado para garantir que o texto seja branco
+    marginBottom: 20,
   },
   botao: {
-    flex: 0,
-    fontSize: 30,
+    fontSize: 18, // Ajustado o tamanho da fonte
     alignItems: "center",
+    justifyContent: "center",
     marginTop: 20,
     backgroundColor: '#2A784D',
-    borderRadius: 50,
-    width: 'auto',
+    borderRadius: 8,
+    paddingVertical: 15,
   },
   botaoTexto: {
-    fontSize: 15,
-    color: 'black',
+    fontSize: 16, // Ajustado o tamanho da fonte
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 30,
+    textAlign: 'center', // Adicionado para centralizar o texto
   },
   header: {
     flexDirection: 'column',
     alignItems: "center",
+    justifyContent: "center",
     height: 250,
     width: 'auto',
-    padding: 50,
-
+    padding: 20, // Ajustado o padding
   },
   picker: {
-    fontSize: 20,
+    fontSize: 18, // Ajustado o tamanho da fonte
     height: 50,
     backgroundColor: '#2A784D',
-    marginBottom: 150,
-    marginTop: 60,
-    paddingHorizontal: 5,
+    marginBottom: 20,
+    marginTop: 20,
+    paddingHorizontal: 10, // Ajustado o padding horizontal
+    color: 'white', // Adicionado para garantir que o texto seja branco
   },
   textArea: {
     height: 100,
@@ -53,100 +55,103 @@ export const stylesMenu = StyleSheet.create({
   },
   botaoFinailizaAt: {
     backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 5,
+    padding: 20, // Ajustado o padding
+    borderRadius: 8,
     alignSelf: 'center',
-    marginTop: 0,
-
+    marginTop: 20,
   },
   botaoTextoFinailizaAt: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 18, // Ajustado o tamanho da fonte
     fontStyle: 'italic',
   },
   botãoVoltar: {
     backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 5,
+    padding: 20, // Ajustado o padding
+    borderRadius: 8,
     alignSelf: 'center',
-    marginTop: 0,
-
+    marginTop: 20,
   },
   txtBotãoVoltar: {
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 18, // Ajustado o tamanho da fonte
     fontStyle: 'italic',
   },
 });
 
 //#endregion fim da estilização da tela de menu 
 
-
 //#region inicio da estilização da tela de Tela inicial
 export const stylesInicial = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#209A57",
   },
 
   header: {
     backgroundColor: '#209A57',
     alignItems: "center",
-    justifyContent: "space-between",
-    padding: 50,
-    transform: [{ translateX: 30 }, { translateY: 65 }],
+    justifyContent: "center",
+    padding: 20,
   },
 
   logo: {
-    width: 100,
-    height: 100,
-    resizeMode: "center",
+    width: 80,
+    height: 80,
+    resizeMode: "cover",
   },
 
   titulo: {
     fontSize: 24,
-    color: 'black',
-    marginTop: 10,
+    color: 'white',
+    marginTop: 20,
+    fontWeight: "bold",
   },
 
   botaoMenu: {
     alignItems:'center',
     justifyContent: "center",
     backgroundColor: '#2A784D',
-    borderRadius: 50,
-    margin: 300,
-    marginVertical: 2,
-    transform: [
-      { translateX: 30 },
-      { translateY: 300 },
-      { scale: 1.9 }, // Ajuste o valor conforme necessário
-    ],
+    borderRadius: 8,
+    marginTop: 20,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
   },
+  
   textBotaoMenu: {
-    fontSize: 30,
-   // alignItems: "center",
+    fontSize: 16,
     fontWeight: 'bold',
+    color: 'white',
   },
+
   botaoSair: {
     alignItems: "center",
-    marginTop: 50,
+    marginTop: 20,
     backgroundColor: '#2A784D',
-    borderRadius: 100,
-    margin: 350,
-    transform: [{ translateX: 300 }, { translateY: 650 }],
-    fontSize: 20,
-    fontWeight: 'bold'
+    borderRadius: 8,
+    paddingVertical: 15,
+    paddingHorizontal: 30,
   },
+  
   textBotaoSair: {
-    fontSize: 30,
+    fontSize: 16,
     fontWeight: 'bold',
-    alignItems: 'center'
-  }
+    color: 'white',
+    textAlign: 'center',
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 5,
+      height: 5,
+    },
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+  },
 });
 //#endregion
-
 
 //#region inicio da estilização da tela de Tela de cancelamento
 export const stylesCancelamento = StyleSheet.create({
@@ -181,3 +186,43 @@ export const stylesCancelamento = StyleSheet.create({
 });
 //#endregion
 
+//#region styles tela de login
+export const stylesLogin = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#209A57", // Cor de fundo da tela de login
+  },
+  input: {
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+    marginBottom: 20,
+    paddingLeft: 10,
+    width: 300,
+    backgroundColor: "white", // Cor do fundo do input
+    borderRadius: 8, // Borda arredondada
+  },
+  button: {
+    backgroundColor: "#2A784D",
+    padding: 15,
+    borderRadius: 8,
+    width: 300,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
+    fontSize: 16,
+  },
+  titulo: {
+    fontSize: 24,
+    color: "white",
+    marginBottom: 20,
+    fontWeight: "bold",
+  },
+});
+//#endregion

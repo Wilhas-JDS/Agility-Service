@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity, StatusBar } from "react-native";
+import { View, StyleSheet, Text, Image, TouchableOpacity, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { useNavigation } from "@react-navigation/native";
-import Menu from '../../pages/menu/Menu';
 
 export default function Troco() {
   const [selectedValor, setSelectedValor] = useState(null);
@@ -32,7 +31,6 @@ export default function Troco() {
     { label: "R$ 100 (1X R$50 2x 20 1x 10)", value: "R$ 100 (1X R$50 2x 20 1x 10)" },
     { label: "R$ 200 (1X R$100 2x 50)", value: "R$ 200 (1X R$100 2x 50)" },
     { label: "R$ 200 (1X R$100 2x 20 2x 5)", value: "R$ 200 (1X R$100 2x 20 2x 5)" },
-
   ];
   const tipo = [
     { label: "R$ 5", value: "R$ 5" },
@@ -42,17 +40,18 @@ export default function Troco() {
     { label: "R$ 100", value: "R$ 100" },
     { label: "R$ 200", value: "R$ 200" },
   ];
-  const navigation = useNavigation();
-  return (
 
+  const navigation = useNavigation();
+
+  return (
     <View style={styles.container}>
       <StatusBar
-        backgroundColor='#000000' // Cor de fundo da barra de status
-        barStyle="default" // Define a cor do texto da barra de status
+        backgroundColor='#000000'
+        barStyle="default"
       />
       <View style={styles.header}>
         <Image source={require('../../../assets/logoSub.png')} />
-        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Nº CAIXA:{caixa}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Nº CAIXA: {caixa}</Text>
       </View>
 
       <RNPickerSelect
@@ -60,14 +59,14 @@ export default function Troco() {
         items={valor}
         onValueChange={(value) => setSelectedValor(value)}
         value={selectedValor}
-        style={styles.picker}
+        style={pickerSelectStyles}
       />
       <RNPickerSelect
         placeholder={placeholderTipo}
         items={tipo}
         onValueChange={(value) => setSelectedTipo(value)}
         value={selectedTipo}
-        style={styles.picker}
+        style={pickerSelectStyles}
       />
 
       <TouchableOpacity style={styles.botaoSoliAt}>
@@ -79,11 +78,11 @@ export default function Troco() {
         onPress={() => {
           navigation.navigate("Menu");
         }}
+        style={styles.botaoVoltar}
       >
-        <Text >Voltar</Text>
+        <Text style={styles.textoBotaoVoltar}>Voltar</Text>
       </TouchableOpacity>
     </View>
-
   );
 }
 
@@ -92,56 +91,61 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#209A57',
     padding: 20,
-
-  },
-  texto: {
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-  botaoCb: {
-    flex: 0,
-    fontSize: 30,
-    alignItems: "center",
-    marginTop: 20,
-    backgroundColor: '#2A784D',
-    borderRadius: 50,
-    width: 'auto',
-  },
-  botaoCbTexto: {
-    fontSize: 15,
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
   },
   header: {
     flexDirection: 'column',
     alignItems: "center",
     height: 250,
     width: 'auto',
-    padding: 50,
-
+    padding: 20,
   },
-  picker: {
-    fontSize: 20,
-    height: 50,
-    backgroundColor: '#fff',
-    marginBottom: 150,
-    marginTop: 110,
-    paddingHorizontal: 5,
-  },
-
   botaoSoliAt: {
     backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 50,
-    alignSelf: 'center', // Alinha o botão à direita
-    marginTop: 500,
-
+    padding: 20,
+    borderRadius: 8,
+    alignSelf: 'center',
+    marginTop: 20,
   },
-  botaoTextoSoliAt: {
+  botaoCbTexto: {
+    fontSize: 18,
     color: 'black',
     fontWeight: 'bold',
-    fontSize: 30,
+    textAlign: 'center',
+  },
+  botaoVoltar: {
+    backgroundColor: '#ca6500',
+    padding: 20,
+    borderRadius: 8,
+    alignSelf: 'center',
+    marginTop: 20,
+  },
+  textoBotaoVoltar: {
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 18,
     fontStyle: 'italic',
+  },
+});
+
+const pickerSelectStyles = StyleSheet.create({
+  inputIOS: {
+    fontSize: 18,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 8,
+    color: 'black',
+    marginBottom: 20,
+  },
+  inputAndroid: {
+    fontSize: 18,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    borderWidth: 0.5,
+    borderColor: 'gray',
+    borderRadius: 8,
+    color: 'black',
+    marginBottom: 20,
   },
 });

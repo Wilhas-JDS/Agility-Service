@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet, Text, Image, Touchable, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, Image, TouchableOpacity, TextInput, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { useNavigation } from "@react-navigation/native";
+import { stylesMenu } from "../estilos/Styles";
 
 export default function Troco() {
   const [selectedMarca, setSelectedMarca] = useState(null);
@@ -25,19 +26,19 @@ export default function Troco() {
     color: "#9EA0A4",
   };
 
-
   const marca = [
     { label: "Lucky Strike", value: "Lucky Strike" },
     { label: "Marlboro", value: "Marlboro" },
     { label: "Dunhill", value: "Dunhill" },
     { label: "Camel", value: "Camel" },
     { label: "Parliament", value: "Parliament" },
-
   ];
+
   const tipo = [
     { label: 'Maço', value: "Maço" },
     { label: "Box", value: "Box" },
   ];
+
   const qtd = [
     { label: "1", value: "1" },
     { label: "2", value: "2" },
@@ -49,16 +50,28 @@ export default function Troco() {
     { label: "8", value: "8" },
     { label: "9", value: "9" },
     { label: "10", value: "10" },
-
   ];
 
   const navigation = useNavigation();
-  return (
 
-    <View style={styles.container}>
-      <View style={styles.header}>
+  const handleSolicitarAtendimento = () => {
+    // Adicione aqui a lógica para solicitar o atendimento
+
+    // Limpar os campos
+    setSelectedMarca(null);
+    setSelectedTipo(null);
+    setSelectedQtd(null);
+  };
+
+  return (
+    <View style={stylesMenu.container}>
+      <StatusBar
+        backgroundColor='#000000'
+        barStyle="default"
+      />
+      <View style={stylesMenu.header}>
         <Image source={require('../../../assets/logoSub.png')} />
-        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Nº CAIXA:{caixa}</Text>
+        <Text style={{ fontSize: 22, fontWeight: 'bold' }}>Nº CAIXA: {caixa}</Text>
       </View>
 
       <RNPickerSelect
@@ -66,95 +79,30 @@ export default function Troco() {
         items={marca}
         onValueChange={(value) => setSelectedMarca(value)}
         value={selectedMarca}
-        style={styles.picker}
+        style={stylesMenu.picker}
       />
       <RNPickerSelect
         placeholder={placeholderTipo}
         items={tipo}
         onValueChange={(value) => setSelectedTipo(value)}
         value={selectedTipo}
-        style={styles.picker}
+        style={stylesMenu.picker}
       />
       <RNPickerSelect
         placeholder={placeholderQtd}
         items={qtd}
         onValueChange={(value) => setSelectedQtd(value)}
-        value={placeholderQtd}
-        style={styles.picker}
+        value={selectedQtd}
+        style={stylesMenu.picker}
       />
 
-      <TouchableOpacity style={styles.botaoSoliAt}>
-        <Text style={styles.botaoCbTexto}>
-          Solicitar Atendimento
-        </Text>
+      <TouchableOpacity onPress={handleSolicitarAtendimento} style={stylesMenu.botaoFinailizaAt}>
+        <Text style={stylesMenu.botaoTextoFinailizaAt}>Solicitar Atendimento</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Menu");
-        }}
-      >
-        <Text >Voltar</Text>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Menu")} style={stylesMenu.botãoVoltar}>
+        <Text style={stylesMenu.txtBotãoVoltar} >Voltar</Text>
       </TouchableOpacity>
     </View>
-
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#209A57',
-    padding: 20,
-
-  },
-  texto: {
-    fontSize: 30,
-    fontWeight: "bold",
-  },
-  botaoCb: {
-    flex: 0,
-    fontSize: 30,
-    alignItems: "center",
-    marginTop: 20,
-    backgroundColor: '#2A784D',
-    borderRadius: 50,
-    width: 'auto',
-  },
-  botaoCbTexto: {
-    fontSize: 15,
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
-  },
-  header: {
-    flexDirection: 'column',
-    alignItems: "center",
-    height: 250,
-    width: 'auto',
-    padding: 50,
-
-  },
-  picker: {
-    fontSize: 20,
-    height: 50,
-    backgroundColor: '#fff',
-    marginBottom: 150,
-    marginTop: 110,
-    paddingHorizontal: 5,
-  },
-
-  botaoSoliAt: {
-    backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 50,
-    alignSelf: 'center', // Alinha o botão à direita
-    marginTop: 500,
-
-  },
-  botaoTextoSoliAt: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontStyle: 'italic',
-  },
-});
