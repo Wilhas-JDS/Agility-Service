@@ -20,7 +20,7 @@ export default function Troco() {
     value: null,
     color: "#9EA0A4",
   };
-
+ 
   const marca = [
     { label: "Lucky Strike", value: "Lucky Strike" },
     { label: "Marlboro", value: "Marlboro" },

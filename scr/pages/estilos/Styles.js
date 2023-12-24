@@ -55,7 +55,7 @@ export const stylesMenu = StyleSheet.create({
     backgroundColor: '#ca6500',
     padding: 25,
     borderRadius: 5,
-    alignSelf: 'center', 
+    alignSelf: 'center',
     marginTop: 0,
 
   },
@@ -65,11 +65,11 @@ export const stylesMenu = StyleSheet.create({
     fontSize: 30,
     fontStyle: 'italic',
   },
-  botãoVoltar:{
+  botãoVoltar: {
     backgroundColor: '#ca6500',
     padding: 25,
     borderRadius: 5,
-    alignSelf: 'center', 
+    alignSelf: 'center',
     marginTop: 0,
 
   },
@@ -83,6 +83,8 @@ export const stylesMenu = StyleSheet.create({
 
 //#endregion fim da estilização da tela de menu 
 
+
+//#region inicio da estilização da tela de Tela inicial
 export const stylesInicial = StyleSheet.create({
   container: {
     flex: 1,
@@ -94,6 +96,7 @@ export const stylesInicial = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 50,
+    transform: [{ translateX: 30 }, { translateY: 65 }],
   },
 
   logo: {
@@ -104,22 +107,48 @@ export const stylesInicial = StyleSheet.create({
 
   titulo: {
     fontSize: 24,
-    color: '#00a854',
+    color: 'black',
     marginTop: 10,
   },
 
-  botao: {
-    fontSize: 22,
+  botaoMenu: {
+    alignItems:'center',
     justifyContent: "center",
+    backgroundColor: '#2A784D',
+    borderRadius: 50,
+    margin: 300,
+    marginVertical: 2,
+    transform: [
+      { translateX: 30 },
+      { translateY: 300 },
+      { scale: 1.9 }, // Ajuste o valor conforme necessário
+    ],
+  },
+  textBotaoMenu: {
+    fontSize: 30,
+   // alignItems: "center",
+    fontWeight: 'bold',
+  },
+  botaoSair: {
     alignItems: "center",
     marginTop: 50,
-    marginBottom: 37,
     backgroundColor: '#2A784D',
     borderRadius: 100,
-
+    margin: 350,
+    transform: [{ translateX: 300 }, { translateY: 650 }],
+    fontSize: 20,
+    fontWeight: 'bold'
   },
+  textBotaoSair: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    alignItems: 'center'
+  }
 });
+//#endregion
 
+
+//#region inicio da estilização da tela de Tela de cancelamento
 export const stylesCancelamento = StyleSheet.create({
   container: {
     flex: 1,
@@ -150,3 +179,5 @@ export const stylesCancelamento = StyleSheet.create({
     fontStyle: 'italic',
   },
 });
+//#endregion
+
