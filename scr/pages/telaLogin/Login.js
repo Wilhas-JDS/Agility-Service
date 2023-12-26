@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TextInput, TouchableOpacity, View, Image } from "react-native";
+import { Text, TextInput, TouchableOpacity, View, Image, StatusBar } from "react-native";
 import { stylesLogin } from "../estilos/Styles";
 
 export default function Login({ navigation }) {
@@ -15,14 +15,17 @@ const handleLogin = () => {
  
 };
 
-  
 
   return (
-    
+
       <View style={stylesLogin.container}>
+        <StatusBar
+        backgroundColor='#000000'
+        barStyle="default"
+      />
         <Image source={require("../../../assets/logo.png")}/>
 
-       
+      
         <Text style={stylesLogin.titulo}>Tela de Login</Text>
 
         <TextInput

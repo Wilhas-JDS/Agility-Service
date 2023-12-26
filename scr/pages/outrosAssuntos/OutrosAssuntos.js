@@ -8,7 +8,6 @@ export default function OutrosAssuntos() {
   const [selectedAssunto, setSelectedAssunto] = useState(null);
   const [observacao, setObservacao] = useState("");
   const [caixa, setCaixa] = useState("14");
-
   const placeholderAssunto = {
     label: "Selecione o Assunto",
     value: null,
@@ -21,24 +20,21 @@ export default function OutrosAssuntos() {
     { label: "Assunto 3", value: "Assunto 3" },
     // Adicione mais assuntos conforme necessário
   ];
-
   const navigation = useNavigation();
-
   const handleSolicitarAtendimento = () => {
-    // Adicione aqui a lógica para solicitar o atendimento
-
     // Limpar os campos
     setSelectedAssunto(null);
     setObservacao("");
   };
+  const styles = stylesMenu;
 
   return (
-    <ScrollView style={stylesMenu.container}>
+    <ScrollView style={styles.container}>
       <StatusBar
         backgroundColor='#000000'
         barStyle="default"
       />
-      <View style={stylesMenu.header}>
+      <View style={styles.header}>
         <Image source={require('../../../assets/logoSub.png')} />
         <Text style={{ fontSize: 22, fontWeight: 'bold' }}>Nº CAIXA: {caixa}</Text>
       </View>
@@ -48,23 +44,23 @@ export default function OutrosAssuntos() {
         items={assuntos}
         onValueChange={(value) => setSelectedAssunto(value)}
         value={selectedAssunto}
-        style={stylesMenu.picker}
+        style={styles.picker}
       />
 
       <TextInput
-        style={stylesMenu.textArea}
+        style={styles.textArea}
         placeholder="Observação"
         onChangeText={(text) => setObservacao(text)}
         value={observacao}
         multiline
       />
 
-      <TouchableOpacity onPress={handleSolicitarAtendimento} style={stylesMenu.botaoFinailizaAt}>
-        <Text style={stylesMenu.botaoTextoFinailizaAt}>Solicitar Atendimento</Text>
+      <TouchableOpacity onPress={handleSolicitarAtendimento} style={styles.botaoFinailizaAt}>
+        <Text style={styles.botaoTextoFinailizaAt}>Solicitar Atendimento</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Menu")} style={stylesMenu.botãoVoltar}>
-        <Text style={stylesMenu.txtBotãoVoltar} >Voltar</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Menu")} style={styles.botãoVoltar}>
+        <Text style={styles.txtBotãoVoltar} >Voltar</Text>
       </TouchableOpacity>
     </ScrollView>
   );

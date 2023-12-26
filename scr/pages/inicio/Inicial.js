@@ -27,8 +27,8 @@ export default function Inicial({ route, navigation }) {
       />
       <View style={styles.header}>
         <Image source={require('../../../assets/logo.png')} />
-        <Text style={{ fontSize: 30, fontWeight: 'bold' }} >Operador(a):{operador}</Text>
-        <Text style={{ fontSize: 30, fontWeight: 'bold' }} >CAIXA:{numeroCaixa}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }} >Operador(a): {operador}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }} >Caixa: {numeroCaixa}</Text>
       </View>
       <View>
         <TouchableOpacity

@@ -1,18 +1,19 @@
 // Sty.js
 import { StyleSheet } from "react-native";
 
-//#region inicio da estilização da tela de menu  
+//#region inicio da estilização da tela de menu  
 export const stylesMenu = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#209A57',
-    padding: 20,
+    //justifyContent: "center",
+    //alignItems: "center",
+    backgroundColor: "#209A57",
   },
   texto: {
     fontSize: 30,
     fontWeight: "bold",
     color: 'white', // Adicionado para garantir que o textof seja branco
-    marginBottom: 20,
+    //    marginBottom: 20,
   },
   botao: {
     fontSize: 18, // Ajustado o tamanho da fonte
@@ -21,7 +22,7 @@ export const stylesMenu = StyleSheet.create({
     marginTop: 20,
     backgroundColor: '#2A784D',
     borderRadius: 8,
-    paddingVertical: 15,
+    paddingVertical: 10,
   },
   botaoTexto: {
     fontSize: 16, // Ajustado o tamanho da fonte
@@ -33,9 +34,7 @@ export const stylesMenu = StyleSheet.create({
     flexDirection: 'column',
     alignItems: "center",
     justifyContent: "center",
-    height: 250,
-    width: 'auto',
-    padding: 20, // Ajustado o padding
+    padding: 40, // Ajustado o padding
   },
   picker: {
     fontSize: 18, // Ajustado o tamanho da fonte
@@ -61,25 +60,27 @@ export const stylesMenu = StyleSheet.create({
     marginTop: 20,
   },
   botaoTextoFinailizaAt: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
     fontSize: 18, // Ajustado o tamanho da fonte
-    fontStyle: 'italic',
+
   },
   botãoVoltar: {
     backgroundColor: '#ca6500',
     padding: 20, // Ajustado o padding
-    borderRadius: 8,
-    alignSelf: 'center',
-    marginTop: 20,
+    borderRadius: 15,
+    alignSelf: 'flex-end',
+    marginTop: 280,
+    transform: [{ translateX: -50 }, { translateY: -220 }],
   },
   txtBotãoVoltar: {
-    color: 'black',
+    color: 'white',
     fontWeight: 'bold',
-    fontSize: 18, // Ajustado o tamanho da fonte
-    fontStyle: 'italic',
+    fontSize: 18, // Adicionado o tamanho da fonte
+    
   },
 });
+
 
 //#endregion fim da estilização da tela de menu 
 
@@ -103,6 +104,7 @@ export const stylesInicial = StyleSheet.create({
     width: 80,
     height: 80,
     resizeMode: "cover",
+    
   },
 
   titulo: {
@@ -113,15 +115,15 @@ export const stylesInicial = StyleSheet.create({
   },
 
   botaoMenu: {
-    alignItems:'center',
+    alignItems: 'center',
     justifyContent: "center",
-    backgroundColor: '#2A784D',
+    backgroundColor: '#ca6500',
     borderRadius: 8,
     marginTop: 20,
     paddingVertical: 15,
     paddingHorizontal: 30,
   },
-  
+
   textBotaoMenu: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -130,13 +132,13 @@ export const stylesInicial = StyleSheet.create({
 
   botaoSair: {
     alignItems: "center",
-    marginTop: 20,
-    backgroundColor: '#2A784D',
+    backgroundColor: '#ca6500',
     borderRadius: 8,
     paddingVertical: 15,
     paddingHorizontal: 30,
+    transform: [{ translateX: 300 }, { translateY: 250 }],
   },
-  
+
   textBotaoSair: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -149,39 +151,6 @@ export const stylesInicial = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 5,
-  },
-});
-//#endregion
-
-//#region inicio da estilização da tela de Tela de cancelamento
-export const stylesCancelamento = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#209A57',
-    padding: 20,
-  },
-
-  header: {
-    flexDirection: 'column',
-    alignItems: "center",
-    height: 250,
-    width: 'auto',
-    padding: 50,
-    marginVertical: 20
-  },
-
-  botaoSoliAt: {
-    backgroundColor: '#ca6500',
-    padding: 25,
-    borderRadius: 52,
-    alignSelf: 'center',
-    marginTop: 80,
-  },
-  botaoTextoSoliAt: {
-    color: 'black',
-    fontWeight: 'bold',
-    fontSize: 30,
-    fontStyle: 'italic',
   },
 });
 //#endregion
@@ -225,4 +194,75 @@ export const stylesLogin = StyleSheet.create({
     fontWeight: "bold",
   },
 });
-//#endregion
+//#endregion fim da tela de login
+
+//#region  Inicio do estilo da tela de cancelamento
+export const stylesCancelamento = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#209A57',
+    padding: 20,
+  },
+ 
+  titulo: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginBottom: 20,
+  },
+  header: {
+    flexDirection: 'column',
+    alignItems: "center",
+    height: 250,
+    width: 'auto',
+    padding: 50,
+  },
+  picker: {
+    height: 50,
+    backgroundColor: '#fff',
+    marginBottom: 20,
+    marginTop: 200,
+    paddingHorizontal: 5,
+  },
+  textArea: {
+    height: 100,
+    backgroundColor: '#fff',
+    padding: 10,
+    marginBottom: 20,
+    fontSize: 15,
+  },
+  botaoSoliCancelamento: {
+    backgroundColor: '#ca6500',
+    padding: 25,
+    borderRadius: 15,
+    alignSelf: 'center',
+    transform: [{ translateX: 15 }, { translateY: 50 }],
+  },
+  textBotaoSoliCancelamento: {
+      fontSize: 15,
+      color: 'white',
+      fontWeight: 'normal',
+      fontSize: 30,
+  },
+  botaoVoltar: {
+    backgroundColor: '#ca6500',
+    padding: 20,
+    borderRadius: 15,
+    alignSelf: 'center',
+    marginTop: 20,
+    transform: [{ translateX: 300 }, { translateY: 320 }],
+  },
+  textBotaoVoltar: {
+    fontSize: 18,
+    color: 'white',
+    fontWeight: 'normal',
+
+  },
+  titulo: {
+    fontSize: 24,
+    color: "white",
+    marginBottom: 20,
+    fontWeight: "bold",
+  },
+});
+//#endregion fim do estilo da tela de cancelamento

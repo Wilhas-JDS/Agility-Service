@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ScrollView, TouchableOpacity, Text, StyleSheet, Image, StatusBar }
+import { View, ScrollView, TouchableOpacity, Text, Image, StatusBar }
   from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { Picker } from '@react-native-picker/picker';
@@ -41,7 +41,7 @@ export default function Menu({ route }) {
         barStyle="default"
       />
       <View style={stylesMenu.header}>
-        <Image source={require('../../../assets/logoSub.png')} />
+        <Image source={require('../../../assets/logo.png')} />
         <Text style={{ fontSize: 20, fontWeight: 'bold' }} >Operador(a): {operador}</Text>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }} >CAIXA: {numeroCaixa}</Text>
       </View>
@@ -76,15 +76,15 @@ export default function Menu({ route }) {
       >
         {renderPickerItems()}
       </Picker>
-
+    
       <TouchableOpacity style={stylesMenu.botaoFinailizaAt}>
         <Text style={stylesMenu.botaoTextoFinailizaAt}>Finalizar Atendimento</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => handleNavigation("Login")} style={stylesMenu.botãoVoltar}>
+      <TouchableOpacity onPress={() => handleNavigation("Inicial")} style={stylesMenu.botãoVoltar}>
         <Text style={stylesMenu.txtBotãoVoltar} >Voltar</Text>
       </TouchableOpacity>
-      
+     
     </ScrollView>
   );
 }
