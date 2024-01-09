@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { View, StyleSheet, Text, Image, TouchableOpacity, StatusBar } from "react-native";
 import RNPickerSelect from "react-native-picker-select";
 import { useNavigation } from "@react-navigation/native";
+import database from '@react-native-firebase/database';
 
 export default function Troco() {
   const [selectedValor, setSelectedValor] = useState(null);
   const [selectedTipo, setSelectedTipo] = useState(null);
   const [caixa, setCaixa] = useState("14");
+  const navigation = useNavigation();
 
   const placeholderValor = {
     label: "Selecione o Valor",
@@ -41,7 +43,23 @@ export default function Troco() {
     { label: "R$ 200", value: "R$ 200" },
   ];
 
-  const navigation = useNavigation();
+  const saveDataToFirebase = () => {
+    if (selectedValor && selectedTipo) {
+      const ref = database().ref(`caixas/${caixa}`);
+
+      ref.set({
+        selectedValor,
+        selectedTipo,
+        timestamp: database.ServerValue.TIMESTAMP
+      }).then(() => {
+        console.log('Dados salvos com sucesso no Firebase!');
+      }).catch((error) => {
+        console.error('Erro ao salvar dados no Firebase:', error);
+      });
+    } else {
+      console.warn('Selecione um valor e um tipo antes de salvar.');
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -69,7 +87,10 @@ export default function Troco() {
         style={pickerSelectStyles}
       />
 
-      <TouchableOpacity style={styles.botaoSoliAt}>
+      <TouchableOpacity
+        onPress={saveDataToFirebase}
+        style={styles.botaoSoliAt}
+      >
         <Text style={styles.botaoCbTexto}>
           Solicitar Atendimento
         </Text>

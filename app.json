@@ -1,5 +1,4 @@
-import 'dotenv/config';
-export default{
+{
   "expo": {
     "name": "Agility-Service",
     "slug": "Agility-Service",
@@ -27,13 +26,18 @@ export default{
     "web": {
       "favicon": "./assets/favicon.png"
     },
-  extra:{
-    apiKey: process.env.apiKey,
-    authDomain: process.env.authDomain,
-    projectId: process.env.projectId,
-    storageBucket: process.env.storageBucket,
-    messagingSenderId: process.env.messagingSenderId,
-    appId: process.env.appId,
-  }
+    
+    "plugins": [
+      "expo-build-properties",
+      "@react-native-firebase/app",
+      {
+        "android": {
+          "compileSdkVersion":33,
+          "targetSdkVersion": 33,
+          "buildToolsVersion": "33.0.0"
+        }
+      
+      }
+    ]
   }
 }

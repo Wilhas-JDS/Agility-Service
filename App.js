@@ -25,7 +25,7 @@ function MyStack() {
       },
     })}
   >
-      <Stack.Screen name="Login" component={Login} />
+     
       <Stack.Screen name="Inicial" component={Inicial} />
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Troco" component={Troco} />
